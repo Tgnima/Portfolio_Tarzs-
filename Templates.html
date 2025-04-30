@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio - Projets & Réalisations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2a2a2a;
+            --secondary-color: #0072ce;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+            --card-bg: #fff;
+            --card-border: #e0e0e0;
+            --tag-bg: #f0f0f0;
+            --tag-special-bg: #ff7e00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 30px 0;
+        }
+
+        .portfolio-header {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .portfolio-header h1 {
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-header h1 i {
+            margin-right: 15px;
+            color: var(--secondary-color);
+        }
+
+        .portfolio-header p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .author {
+            font-style: italic;
+            color: #666;
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 10px;
+        }
+
+        .nav-tabs a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-tabs a i {
+            margin-right: 8px;
+        }
+
+        .nav-tabs a.active {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .action-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        /* Projects */
+        .project-section {
+            margin-bottom: 30px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .section-header i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .section-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-content {
+            padding: 15px;
+        }
+
+        .project-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .project-title i {
+            margin-right: 8px;
+            color: var(--secondary-color);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            padding: 4px 8px;
+            background-color: var(--tag-bg);
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .tag.special {
+            background-color: var(--tag-special-bg);
+            color: white;
+        }
+
+        .add-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            border: 2px dashed var(--card-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-card:hover {
+            background-color: #f9f9f9;
+        }
+
+        .add-card i {
+            font-size: 24px;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-container {
+                flex-wrap: wrap;
+            }
+            
+            .nav-tabs {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with logos -->
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo-container">
+                    <img src="/api/placeholder/50/50" alt="Machine Learning" class="logo">
+                    <img src="/api/placeholder/50/50" alt="HubSpot" class="logo">
+                    <h1>Projets & Réalisations</h1>
+                </div>
+                <div class="logo-container">
+                    <img src="/api/placeholder/50/50" alt="Mistral AI" class="logo">
+                    <img src="/api/placeholder/50/50" alt="Make" class="logo">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Portfolio header -->
+            <div class="portfolio-header">
+                <h1><i class="fas fa-folder"></i> Nos Projets</h1>
+                <p>Ce portfolio présente nos différents travaux dans l'univers de la Data. Il regroupe des projets de data. Il regroupe des projets d'exploration de données, de data visualisation, de machine learning, d'automatisation.</p>
+                <p class="author">Réalisé par : <strong>Votre Nom</strong> et <strong>Votre Collaborateur</strong></p>
+            </div>
+
+            <!-- Navigation tabs -->
+            <div class="nav-tabs">
+                <a href="#" class="active"><i class="fas fa-th"></i> Galerie</a>
+                <a href="#"><i class="fas fa-list"></i> All Projects</a>
+                <a href="#"><i class="fas fa-envelope"></i> Nous contacter</a>
+            </div>
+
+            <!-- Action bar -->
+            <div class="action-bar">
+                <div></div>
+                <button class="btn"><i class="fas fa-plus"></i> Nouveau</button>
+            </div>
+
+            <!-- Project section -->
+            <div class="project-section">
+                <div class="section-header">
+                    <i class="fas fa-trophy"></i>
+                    <h2>Hackathon Project</h2>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project Card 1 -->
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('/api/placeholder/300/180');"></div>
+                        <div class="project-content">
+                            <h3 class="project-title"><i class="fas fa-trophy"></i> Hackaton Des 3M → Deuxième Place</h3>
+                            <div class="tags">
+                                <span class="tag special">Hackathon Project</span>
+                                <span class="tag">No-Code Autom</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('/api/placeholder/300/180');"></div>
+                        <div class="project-content">
+                            <h3 class="project-title"><i class="fas fa-trophy"></i> Géniathon Binko → 2ème place</h3>
+                            <div class="tags">
+                                <span class="tag special">Hackathon Project</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add New Card -->
+                    <div class="add-card">
+                        <i class="fas fa-plus"></i>
+                        <p>Créer un(e) item</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add active class to navigation tabs
+            const navLinks = document.querySelectorAll('.nav-tabs a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
